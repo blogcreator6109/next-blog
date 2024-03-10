@@ -1,0 +1,9 @@
+:root {
+  --color-paragraph: #eee;
+  --color-background: #222;
+
+  &.dark {
+    --color-paragraph: #222;
+    --color-background: #eee;
+  }
+}
