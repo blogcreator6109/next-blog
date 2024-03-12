@@ -1,0 +1,13 @@
+.BackgroundImage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  contain: none;
+  filter: invert(1);
+}
+
+html.dark .BackgroundImage {
+  filter: none;
+}

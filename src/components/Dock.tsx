@@ -1,3 +1,3 @@
 export default function Dock() {
-  return <div>Dock</div>;
+  return <nav></nav>;
 }

@@ -1,0 +1,15 @@
+@import "./base/reset.scss";
+@import "./base/theme.scss";
+
+html {
+  font-size: 10px;
+  color: var(--text-color1);
+}
+
+body {
+  width: 100dvw;
+  height: 100dvh;
+  background: var(--main-bg-color1);
+
+  transition: background 1s;
+}

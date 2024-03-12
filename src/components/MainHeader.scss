@@ -1,0 +1,19 @@
+.MainHeader {
+  height: 3rem;
+  background-color: var(--header-bg-color);
+  display: flex;
+  backdrop-filter: blur(10px);
+  font-size: 1.6rem;
+  justify-content: space-between;
+  padding: 0 2rem;
+
+  .left {
+    display: flex;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
+}
