@@ -5,9 +5,11 @@
   transform: translate(-50%, -50%);
   object-fit: contain;
   contain: none;
+  z-index: -1;
   filter: invert(1);
+  transition: filter $theme-transition-time;
 }
 
 html.dark .BackgroundImage {
-  filter: none;
+  filter: invert(0);
 }

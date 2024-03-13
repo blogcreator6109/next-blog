@@ -1,15 +1,31 @@
 @import "./base/reset.scss";
 @import "./base/theme.scss";
+@import "./base/font.scss";
 
 html {
   font-size: 10px;
   color: var(--text-color1);
+  transition: color $theme-transition-time;
+  user-select: none;
 }
 
 body {
   width: 100dvw;
   height: 100dvh;
-  background: var(--main-bg-color1);
+  background: var(--main-bg-color);
 
-  transition: background 1s;
+  transition: background $theme-transition-time;
+
+  overflow: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  color: inherit;
+}
+
+img {
+  -webkit-user-drag: none; // 드래그했을 때 잔상 제거
 }

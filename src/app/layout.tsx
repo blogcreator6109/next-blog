@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body>
         {/* html 태그가 생성되자마자 테마를 확인해서 dark 값을 넣기 위함 */}
         <script
@@ -21,9 +21,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             __html: `
             const _localStorageTheme = localStorage.getItem("theme");
             const _preferTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            const $theme = _localStorageTheme || (_preferTheme ? 'dark' : 'light');
-            document.documentElement.classList.add($theme);
-          `,
+            const _theme = _localStorageTheme || (_preferTheme ? 'dark' : 'light');
+            document.documentElement.classList.add(_theme);
+        `,
           }}
         ></script>
 

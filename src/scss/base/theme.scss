@@ -1,11 +1,14 @@
 :root {
-  --main-bg-color1: #eee; // 배경 중앙 색상
-  --header-bg-color: #333333c0; // 헤더 배경 색상
+  // Colors
+  --main-bg-color: #ddd; // 배경 중앙 색상
+  --header-bg-color: lightblue; // 헤더 배경 색상
   --text-color1: #222; // 텍스트 색상
+  --text-shadow-color: #0000003a; // 텍스트 그림자 색상
 
   &.dark {
-    --main-bg-color1: #353535;
-    --header-bg-color: #333333c0;
+    --main-bg-color: #444444;
+    --header-bg-color: #353535;
     --text-color1: #fff;
+    --text-shadow-color: #ffffff3a; // 텍스트 그림자 색상
   }
 }
