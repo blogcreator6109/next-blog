@@ -1,6 +1,6 @@
 import BackgroundImage from "@/components/BackgroundImage";
-import MainHeader from "@/components/MainHeader";
-import AppList from "@/components/AppList";
+import Header from "@/components/Header";
+import Main from "@/components/Main";
 import { ReactNode } from "react";
 
 import type { Metadata } from "next";
@@ -28,8 +28,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         ></script>
 
         <BackgroundImage />
-        <MainHeader />
-        <AppList />
+        <Header />
+        <Main />
         {children}
       </body>
     </html>

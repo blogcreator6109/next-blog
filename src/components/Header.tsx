@@ -1,13 +1,13 @@
-import DateTime from "./MainHeader/DateTime";
-import ThemeIcon from "./MainHeader/ThemeIcon";
-import "./MainHeader.scss";
+import DateTime from "./Header/DateTime";
+import ThemeIcon from "./Header/ThemeIcon";
+import "./Header.scss";
 import Image from "next/image";
 
 import logoImg from "@/images/logo.png";
 
-function MainHeader() {
+export default function Header() {
   return (
-    <header className="MainHeader">
+    <header className="Header">
       <div className="left">
         <button className="logo">
           <Image src={logoImg} alt="logo" />
@@ -21,5 +21,3 @@ function MainHeader() {
     </header>
   );
 }
-
-export default MainHeader;

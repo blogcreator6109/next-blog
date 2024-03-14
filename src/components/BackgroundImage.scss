@@ -13,3 +13,9 @@
 html.dark .BackgroundImage {
   filter: invert(0);
 }
+
+@media (max-width: $breakpoint-tablet) {
+  .BackgroundImage {
+    width: 50%;
+  }
+}

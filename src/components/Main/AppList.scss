@@ -1,0 +1,56 @@
+.AppList {
+  display: grid;
+  height: calc(100% - $main-header-height);
+  grid-auto-flow: column;
+  direction: rtl;
+
+  column-gap: 1.5rem;
+  row-gap: 2.8rem;
+  grid-template-columns: repeat(auto-fill, 74px);
+  grid-template-rows: repeat(auto-fill, 80px);
+  padding: 2rem;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .image {
+      padding: 0.6rem;
+      border: 2px solid transparent;
+      img {
+        border-radius: 1.5rem;
+        width: auto;
+        height: auto;
+      }
+    }
+
+    span {
+      margin-top: 0.2rem;
+      font-size: 1.3rem;
+      padding: 0.2rem 0.5rem;
+    }
+
+    &.selected {
+      .image {
+        border-radius: 0.5rem;
+        border-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+      span {
+        border-radius: 0.3rem;
+        background-color: var(--focus-bg-color);
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .AppList {
+    grid-auto-flow: row;
+    direction: initial;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 5vw 4vw;
+    row-gap: 8vw;
+  }
+}

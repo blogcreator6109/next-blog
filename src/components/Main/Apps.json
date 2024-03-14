@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Finder",
+    "minWidth": 200,
+    "minHeight": 200,
+    "zIndex": 0
+  },
+  {
+    "name": "Safari",
+    "minWidth": 200,
+    "minHeight": 200,
+    "zIndex": 0
+  },
+  {
+    "name": "Memo",
+    "minWidth": 200,
+    "minHeight": 200,
+    "zIndex": 0
+  },
+  {
+    "name": "Book",
+    "minWidth": 200,
+    "minHeight": 200,
+    "zIndex": 0
+  },
+  {
+    "name": "Diary",
+    "minWidth": 200,
+    "minHeight": 200,
+    "zIndex": 0
+  },
+  {
+    "name": "Kakaotalk",
+    "minWidth": 200,
+    "minHeight": 200,
+    "zIndex": 0
+  },
+  {
+    "name": "Music",
+    "minWidth": 200,
+    "minHeight": 200,
+    "zIndex": 0
+  },
+  {
+    "name": "Twitter",
+    "minWidth": 200,
+    "minHeight": 200,
+    "zIndex": 0
+  }
+]
