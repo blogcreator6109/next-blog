@@ -1,50 +1,26 @@
 [
   {
-    "name": "Finder",
-    "minWidth": 200,
-    "minHeight": 200,
-    "zIndex": 0
+    "name": "Finder"
   },
   {
-    "name": "Safari",
-    "minWidth": 200,
-    "minHeight": 200,
-    "zIndex": 0
+    "name": "Safari"
   },
   {
-    "name": "Memo",
-    "minWidth": 200,
-    "minHeight": 200,
-    "zIndex": 0
+    "name": "Memo"
   },
   {
-    "name": "Book",
-    "minWidth": 200,
-    "minHeight": 200,
-    "zIndex": 0
+    "name": "Book"
   },
   {
-    "name": "Diary",
-    "minWidth": 200,
-    "minHeight": 200,
-    "zIndex": 0
+    "name": "Diary"
   },
   {
-    "name": "Kakaotalk",
-    "minWidth": 200,
-    "minHeight": 200,
-    "zIndex": 0
+    "name": "Kakaotalk"
   },
   {
-    "name": "Music",
-    "minWidth": 200,
-    "minHeight": 200,
-    "zIndex": 0
+    "name": "Music"
   },
   {
-    "name": "Twitter",
-    "minWidth": 200,
-    "minHeight": 200,
-    "zIndex": 0
+    "name": "Twitter"
   }
 ]

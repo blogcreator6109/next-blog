@@ -1,49 +1,30 @@
 "use client";
 
 import { useState } from "react";
+import AppItem from "./AppList/AppItem";
 import "./AppList.scss";
-import Image from "next/image";
-
-type AppType = {
-  name: string;
-  minWidth: number;
-  minHeight: number;
-  zIndex: number;
-};
+import apps from "./Apps.json";
 
 export default function AppList({
-  apps,
-  handleOpenApp,
+  openApp,
 }: {
-  apps: AppType[]; // Apps.json 참조
-  handleOpenApp: (app: AppType) => void;
+  openApp: (app: AppType, appCenterPos: { x: number; y: number }) => void;
 }) {
   const [selectedApp, setSelectedApp] = useState("");
 
   return (
     <ol className="AppList">
-      {apps.map((app) => {
+      {apps.map((app, idx) => {
         return (
-          <li
-            key={app.name}
-            className={selectedApp === app.name ? "selected" : ""}
-          >
-            <div className="image">
-              <Image
-                src={`/System/Icons/${app.name.toLowerCase()}.png`}
-                alt={app.name}
-                width={60}
-                height={60}
-                onMouseDown={() => {
-                  setSelectedApp(app.name);
-                }}
-                onDoubleClick={() => {
-                  handleOpenApp(app);
-                }}
-              />
-            </div>
-            <span>{app.name}</span>
-          </li>
+          <AppItem
+            key={app.name + String(idx)}
+            app={app}
+            isSelected={selectedApp === app.name}
+            selectApp={() => {
+              setSelectedApp(app.name);
+            }}
+            openApp={openApp}
+          />
         );
       })}
     </ol>

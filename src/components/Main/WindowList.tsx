@@ -1,44 +1,54 @@
+import { useEffect, useState } from "react";
 import "./WindowList.scss";
-import { Rnd } from "react-rnd";
+import WindowItem from "./WindowList/WindowItem";
 
-type AppType = {
-  name: string;
-  minWidth: number;
-  minHeight: number;
-  zIndex: number;
-};
+let isMounted = false;
 
 export default function WindowList({
-  openedApps,
+  windows,
   handleFocusWindow,
 }: {
-  openedApps: AppType[];
-  handleFocusWindow: (app: AppType) => void;
+  windows: WindowType[];
+  handleFocusWindow: (window: WindowType) => void;
 }) {
+  const [initWindowPos, setInitWindowPos] = useState({ x: 100, y: 100 });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setInitWindowPos({
+        x: window.innerWidth / 2 - 250,
+        y: window.innerHeight / 2 - 150,
+      });
+    };
+    isMounted = true;
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      setInitWindowPos({
+        x: initWindowPos.x + 20,
+        y: initWindowPos.y + 20,
+      });
+    }
+  }, [windows]);
+
   return (
     <>
-      {openedApps.map((app, idx) => (
-        <Rnd
-          key={app.name + String(idx)}
-          className="Window"
-          minHeight={app.minHeight || 200}
-          minWidth={app.minWidth || 200}
-          style={{ zIndex: app.zIndex }}
-          default={{
-            x: 0,
-            y: 0,
-            width: 200,
-            height: 200,
-          }}
-          onMouseDown={() => {
-            handleFocusWindow(app);
-          }}
-          onResizeStart={() => {
-            handleFocusWindow(app);
-          }}
-        >
-          <div className="wrapper">{app.name}</div>
-        </Rnd>
+      {windows.map((window, idx) => (
+        <WindowItem
+          key={window.id}
+          initWindowPos={initWindowPos}
+          window={window}
+          idx={idx}
+          handleFocusWindow={handleFocusWindow}
+        />
       ))}
     </>
   );
