@@ -3,6 +3,8 @@ import "./WindowItem.scss";
 import { Rnd } from "react-rnd";
 import { getVarOfCSS } from "@/utils/common";
 
+import dynamic from "next/dynamic";
+
 export default function WindowItem({
   window,
   idx,
@@ -17,13 +19,24 @@ export default function WindowItem({
   const windowRef = useRef<Rnd | null>(null);
   const [mounted, setMounted] = useState(false);
 
+  const [loadedComp, setLoadedComp] = useState<any>(null);
+
   useEffect(() => {
+    const comp = dynamic(() => import(`./WindowItem/${window.name}`), {
+      loading: () => <div>Loading...</div>,
+    });
+
+    setLoadedComp(comp);
+
     if (windowRef.current) {
       const breakpointTablet = Number(getVarOfCSS("--breakpoint-tablet"));
 
       if (innerWidth < breakpointTablet) {
         windowRef.current.updatePosition({ x: 0, y: 0 });
-        windowRef.current.updateSize({ width: innerWidth, height: innerHeight});
+        windowRef.current.updateSize({
+          width: innerWidth,
+          height: innerHeight,
+        });
         setTimeout(() => {
           setMounted(true);
         }, 500);
@@ -33,7 +46,6 @@ export default function WindowItem({
         setTimeout(() => {
           setMounted(true);
         }, 500);
-
       }
     }
   }, []);
@@ -60,7 +72,7 @@ export default function WindowItem({
         handleFocusWindow(window);
       }}
     >
-      <div className="wrapper">{window.name}</div>
+      {loadedComp ? loadedComp : <div>Loading...</div>}
     </Rnd>
   );
 }

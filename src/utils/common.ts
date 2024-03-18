@@ -1,10 +1,4 @@
-export const checkIsMobile = (userAgent) => {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    userAgent
-  );
-};
-
-export const getVarOfCSS = (name, toNumber = true) => {
+export const getVarOfCSS = (name: string, toNumber = true) => {
   try {
     const value = getComputedStyle(document.documentElement)
       .getPropertyValue(name)

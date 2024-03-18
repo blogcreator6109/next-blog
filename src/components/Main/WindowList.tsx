@@ -11,9 +11,11 @@ export default function WindowList({
   windows: WindowType[];
   handleFocusWindow: (window: WindowType) => void;
 }) {
+  // 윈도우 열었을 때 초기 위치 설정
   const [initWindowPos, setInitWindowPos] = useState({ x: 100, y: 100 });
 
   useEffect(() => {
+    // 마운트 되었을 때 초기 위치를 결정한다.
     const handleResize = () => {
       setInitWindowPos({
         x: window.innerWidth / 2 - 250,
@@ -32,23 +34,26 @@ export default function WindowList({
 
   useEffect(() => {
     if (isMounted) {
+      // window가 변화가 있을 때마다 초기 위치를 오른쪽 아래로 살짝 변경한다.
       setInitWindowPos({
         x: initWindowPos.x + 20,
         y: initWindowPos.y + 20,
       });
     }
+    console.log(windows);
   }, [windows]);
 
   return (
     <>
       {windows.map((window, idx) => (
-        <WindowItem
-          key={window.id}
-          initWindowPos={initWindowPos}
-          window={window}
-          idx={idx}
-          handleFocusWindow={handleFocusWindow}
-        />
+        <div key={window.id}>
+          <WindowItem
+            initWindowPos={initWindowPos}
+            window={window}
+            idx={idx}
+            handleFocusWindow={handleFocusWindow}
+          />
+        </div>
       ))}
     </>
   );

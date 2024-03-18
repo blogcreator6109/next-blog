@@ -5,6 +5,7 @@
   border-radius: 1.3rem;
   top: 0;
   left: 0;
+  overflow: hidden;
 
   $mount-time: 0.3s;
   $mount-timing: ease;
@@ -15,16 +16,6 @@
 
   &.mounted {
     transition: none;
-  }
-
-  .wrapper {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    font-size: 3.6rem;
   }
 }
 
