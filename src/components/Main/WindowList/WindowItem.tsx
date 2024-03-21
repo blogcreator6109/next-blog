@@ -1,13 +1,26 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./WindowItem.scss";
 import { Rnd } from "react-rnd";
 import { getVarOfCSS } from "@/utils/common";
 
 import dynamic from "next/dynamic";
 
+const setWindowRef = (
+  target: Rnd,
+  x: number,
+  y: number,
+  w: number,
+  h: number
+) => {
+  target.updatePosition({ x, y });
+  target.updateSize({
+    width: w,
+    height: h,
+  });
+};
+
 export default function WindowItem({
   window,
-  idx,
   initWindowPos,
   handleFocusWindow,
 }: {
@@ -17,43 +30,43 @@ export default function WindowItem({
   handleFocusWindow: (window: WindowType) => void;
 }) {
   const windowRef = useRef<Rnd | null>(null);
+
   const [mounted, setMounted] = useState(false);
 
-  const [loadedComp, setLoadedComp] = useState<any>(null);
-
-  useEffect(() => {
-    const comp = dynamic(() => import(`./WindowItem/${window.name}`), {
+  // useEffect 안에서 dynamic 값을 불러와서 사용하면 props key 어쩌구 Warning이 발생한다.
+  // => A props object containing a "key" prop is being spread into JSX
+  const LoadedComp = useMemo(() => {
+    return dynamic(() => import(`./WindowItem/${window.name}`), {
       loading: () => <div>Loading...</div>,
     });
+  }, []);
 
-    setLoadedComp(comp);
-
+  useEffect(() => {
     if (windowRef.current) {
       const breakpointTablet = Number(getVarOfCSS("--breakpoint-tablet"));
 
       if (innerWidth < breakpointTablet) {
-        windowRef.current.updatePosition({ x: 0, y: 0 });
-        windowRef.current.updateSize({
-          width: innerWidth,
-          height: innerHeight,
-        });
-        setTimeout(() => {
-          setMounted(true);
-        }, 500);
+        setWindowRef(windowRef.current, 0, 0, innerWidth, innerHeight);
       } else {
-        windowRef.current.updatePosition(initWindowPos);
-        windowRef.current.updateSize({ width: 500, height: 300 });
-        setTimeout(() => {
-          setMounted(true);
-        }, 500);
+        setWindowRef(
+          windowRef.current,
+          initWindowPos.x,
+          initWindowPos.y,
+          window.width,
+          window.height
+        );
       }
+
+      // 위치 설정 후 0.5초 뒤에 마운트 되었다고 해서 그 떄부터는 마우스로 움직일 수 있게 한다.
+      setTimeout(() => {
+        setMounted(true);
+      }, 500);
     }
   }, []);
 
   return (
     <Rnd
       ref={windowRef}
-      key={window.name + String(idx)}
       className={`Window ${mounted && "mounted"}`}
       style={{
         zIndex: window.zIndex,
@@ -72,7 +85,7 @@ export default function WindowItem({
         handleFocusWindow(window);
       }}
     >
-      {loadedComp ? loadedComp : <div>Loading...</div>}
+      <LoadedComp />
     </Rnd>
   );
 }

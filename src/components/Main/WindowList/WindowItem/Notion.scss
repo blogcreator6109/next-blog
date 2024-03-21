@@ -8,5 +8,9 @@
     height: calc(100% - 5rem);
     overflow-y: auto;
     cursor: initial;
+
+    [class*="notion"] {
+      transition: background-color $theme-transition-time;
+    }
   }
 }

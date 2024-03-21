@@ -1,9 +1,12 @@
-import DateTime from "./Header/DateTime";
-import ThemeIcon from "./Header/ThemeIcon";
-import "./Header.scss";
 import Image from "next/image";
 
 import logoImg from "@/images/logo.png";
+
+import DateTime from "./Header/DateTime";
+import ThemeIcon from "./Header/ThemeIcon";
+import AppMenu from "./Header/AppMenu";
+
+import "./Header.scss";
 
 export default function Header() {
   return (
@@ -12,7 +15,9 @@ export default function Header() {
         <button className="logo">
           <Image src={logoImg} alt="logo" />
         </button>
-        <strong>Blog Creator&apos;s Blog</strong>
+        <strong>
+          <AppMenu />
+        </strong>
       </div>
       <div className="right">
         <ThemeIcon />

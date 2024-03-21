@@ -5,7 +5,9 @@
   --text-color1: #222; // 텍스트 색상
   --focus-bg-color: #68a2ff;
   --window-bg-color: #ececec;
-  --window-border-color: #aaa;
+  --window-border-color: #666;
+
+  --primary-color: #68a2ff;
 
   &.dark {
     --main-bg-color: #444444;

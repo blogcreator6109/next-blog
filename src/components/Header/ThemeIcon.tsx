@@ -6,9 +6,10 @@ import Image from "next/image";
 
 import moonIcon from "@/images/moon.svg";
 import sunIcon from "@/images/sun.svg";
+import useCommonStore from "@/stores/common";
 
 export default function ThemeIcon() {
-  const [theme, setTheme] = useState("dark");
+  const { theme, setTheme } = useCommonStore();
 
   useEffect(() => {
     const _localStorageTheme = localStorage.getItem("theme");

@@ -3,6 +3,7 @@
 import { useReducer } from "react";
 import AppList from "./Main/AppList";
 import WindowList from "./Main/WindowList";
+import useCommonStore from "@/stores/common";
 
 import "./Main.scss";
 
@@ -12,8 +13,8 @@ function reducer(state: WindowType[], action: any) {
       return [
         ...state,
         {
+          ...action.app,
           id: new Date().getTime(),
-          name: action.name,
           zIndex: state.length,
           centerPos: action.appCenterPos,
         },
@@ -49,6 +50,7 @@ function reducer(state: WindowType[], action: any) {
 
 export default function Main() {
   const [windows, dispatchWindows] = useReducer(reducer, []);
+  const { setFocusedWindow } = useCommonStore();
 
   return (
     <>
@@ -56,7 +58,7 @@ export default function Main() {
         openApp={(app: AppType, appCenterPos: { x: number; y: number }) => {
           return dispatchWindows({
             type: "OPEN_APP",
-            name: app.name,
+            app,
             appCenterPos,
           });
         }}
@@ -65,6 +67,7 @@ export default function Main() {
         windows={windows}
         handleFocusWindow={(window: WindowType) => {
           dispatchWindows({ type: "UPDATE_Z_INDEX", window });
+          setFocusedWindow(window);
         }}
       />
     </>

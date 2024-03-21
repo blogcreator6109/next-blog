@@ -7,6 +7,11 @@ $theme-transition-time: 1s;
 // Header
 $main-header-height: 3rem;
 
+/* Memo */
+$memo-header-height: 5rem;
+$memo-category-width: 20rem;
+$memo-list-width: 10rem;
+
 // 컴포넌트에 전달하기 위한 공통 변수
 :root {
   --breakpoint-tablet: 1024;

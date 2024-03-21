@@ -40,17 +40,15 @@ export default function WindowList({
         y: initWindowPos.y + 20,
       });
     }
-    console.log(windows);
   }, [windows]);
 
   return (
     <>
       {windows.map((window, idx) => (
-        <div key={window.id}>
+        <div key={String(window.id)}>
           <WindowItem
             initWindowPos={initWindowPos}
             window={window}
-            idx={idx}
             handleFocusWindow={handleFocusWindow}
           />
         </div>
