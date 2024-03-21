@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { NotionRenderer } from "react-notion-x";
 import useCommonStore from "@/stores/common";
 
@@ -13,13 +13,21 @@ export default function Notion() {
   const { theme } = useCommonStore();
 
   // Third party components
-  const Code = dynamic(() =>
-    import("react-notion-x/build/third-party/code").then((m) => m.Code)
+  const Code = useMemo(
+    () =>
+      dynamic(() =>
+        import("react-notion-x/build/third-party/code").then((m) => m.Code)
+      ),
+    []
   );
-  const Collection = dynamic(() =>
-    import("react-notion-x/build/third-party/collection").then(
-      (m) => m.Collection
-    )
+  const Collection = useMemo(
+    () =>
+      dynamic(() =>
+        import("react-notion-x/build/third-party/collection").then(
+          (m) => m.Collection
+        )
+      ),
+    []
   );
 
   const getData = useCallback((id: string) => {
