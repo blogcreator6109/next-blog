@@ -63,12 +63,18 @@ export default function Notion() {
               Code,
               Collection,
               nextImage: Image,
-              PageLink: ({ href, children }) => (
+              PageLink: ({
+                href,
+                children,
+              }: {
+                href: string;
+                children: React.ReactNode;
+              }) => (
                 <Link
                   href={href}
                   onClick={() => {
                     // href = /notion/ab2f2cac09c948c6b8cf5c9d80d4e977
-                    getData(href.split("/").pop());
+                    getData(href.split("/").pop() as string);
                   }}
                 >
                   {children}

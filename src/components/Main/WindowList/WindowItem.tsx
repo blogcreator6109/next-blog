@@ -25,7 +25,6 @@ export default function WindowItem({
   handleFocusWindow,
 }: {
   window: WindowType;
-  idx: number;
   initWindowPos: { x: number; y: number };
   handleFocusWindow: (window: WindowType) => void;
 }) {
